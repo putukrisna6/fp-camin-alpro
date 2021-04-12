@@ -1,0 +1,37 @@
+.def-look {
+    font-family: "Raleway", sans-serif;
+    color: #8d97ad;
+    font-weight: 400;
+    background: #AAABB8;
+    margin: 0;
+    display: block;
+}
+
+.bg-navbar {
+    background: #25274D;
+    background: -webkit-linear-gradient(legacy-direction(to right), #25274D 0%, #464866 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#25274D), to(#464866));
+    background: -webkit-linear-gradient(left, #25274D 0%, #464866 100%);
+    background: -o-linear-gradient(left, #25274D 0%, #464866 100%);
+    background: linear-gradient(to right, #25274D 0%, #464866 100%);
+}
+
+.bg-section {
+    background: #f8f9fa;
+    background: -webkit-linear-gradient(legacy-direction(to right), #f8f9fa 0%, #aaabb8 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#f8f9fa), to(#aaabb8));
+    background: -webkit-linear-gradient(left, #f8f9fa 0%, #aaabb8 100%);
+    background: -o-linear-gradient(left, #f8f9fa 0%, #aaabb8 100%);
+    background: linear-gradient(to right, #f8f9fa 0%, #aaabb8 100%);
+}
+
+.bg-sidebar {
+    background: #25274D;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 10rem auto;
+}
