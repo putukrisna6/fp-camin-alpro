@@ -26,6 +26,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('profile')->group(function () {
     Route::get('/display', [ProfilesController::class, 'index']);
+    Route::get('/{user}/edit', [ProfilesController::class, 'edit'])->name('profile.edit');
+    Route::patch('/{user}', [ProfilesController::class, 'update'])->name('profile.update');
 });
 
 Route::prefix('groups')->group(function () {

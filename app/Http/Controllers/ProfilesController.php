@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfilesController extends Controller
@@ -54,9 +55,11 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        // $this->authorize('update', $user->profile);
+
+        return view('profiles.edit', compact('user'));
     }
 
     /**
@@ -66,9 +69,17 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        //
+        $data = request()->validate([
+            'phone' => 'required',
+            'profession' => 'required',
+            'location' => 'required',
+        ]);
+
+        auth()->user()->profile->update($data);
+
+        return redirect("/profile");
     }
 
     /**
