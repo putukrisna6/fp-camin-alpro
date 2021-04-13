@@ -9,7 +9,7 @@
             <span class="text">{{ $mytime }}</span>
         </a>
         <h1 class="display-6">{{ $greetings }}, {{ Auth::user()->name }}</h1>
-        <p class="lead">Take a time to to something productive today.</p>
+        <p class="lead">Take a time to do something productive today.</p>
         <hr class="my-4">
     </div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
