@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GroupsController;
+use App\Http\Controllers\ProfilesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('profile')->group(function () {
+    Route::get('/display', [ProfilesController::class, 'index']);
+});
+
+Route::prefix('groups')->group(function () {
+    Route::get('/list', [GroupsController::class, 'index']);
+});
