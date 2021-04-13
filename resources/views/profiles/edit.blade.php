@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Edit your profile info</h1>
+    <h1 class="h3 mb-0 text-gray-800 ml-2">Edit your profile info</h1>
 </div>
 <div class="emp-profile mt-0">
     <form method="post" action="/profile/{{ $user->id }}" enctype="multipart/form-data">

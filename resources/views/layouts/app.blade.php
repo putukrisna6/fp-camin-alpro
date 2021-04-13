@@ -39,10 +39,10 @@
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="{{ url('/features') }}">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Me</a>
+                        <a class="nav-link" href="{{ url('/about') }}">About Me</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">

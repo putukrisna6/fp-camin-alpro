@@ -22,16 +22,13 @@
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
-<div class="jumbotron text-white m-0 bg-navbar">
+<div class="jumbotron text-white m-0 bg-navbar rounded-0">
     <div class="container">
-        <div class="col-md-6 px-0">
-
-        </div>
         <div class="row">
             <div class="col-sm-8 mt-2">
                 <h1 class="display-4 font-italic">Streamline your organization</h1>
                 <p class="lead my-3"><em>Kesiboekan</em> Tracker features rich tools to help you and your team collaborate and connect easily.</p>
-                <a class="btn btn-outline-secondary btn-light" href="#">Sign up now</a>
+                <a class="btn btn-outline-secondary btn-light" href="{{ url('/features') }}">Learn more</a>
             </div>
             <div class="col-sm-4 mt-2">
                 <img src="{{ asset('img/background/team.jpg') }}" class="img-fluid" style="border: 2px solid #AAABB8" alt="">
