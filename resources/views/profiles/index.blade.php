@@ -25,7 +25,7 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Experience</a>
                     </li>
                 </ul>
             </div>
@@ -75,15 +75,22 @@
                             </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Placeholder</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Placeholder Value</p>
-                                </div>
-                            </div>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Education</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ Auth::user()->profile->education }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Expertise</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ Auth::user()->profile->expertise }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

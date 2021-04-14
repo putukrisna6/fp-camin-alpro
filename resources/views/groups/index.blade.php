@@ -2,129 +2,38 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800 ml-2">Your Groups</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50 mr-1"></i> Add Group</a>
+    <h1 class="h3 mb-0 text-gray-800 ml-2">Start collaborating</h1>
+    <a href="{{ url('groups/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50 mr-1"></i> Add Group</a>
 </div>
 
-<div class="row">
+@foreach ($groups as $group)
+    @if ($group->visibility == 'Public')
+        <div class="row">
+            <div class="col-md-6 p-3">
 
-    <div class="col-lg-3">
-
-        <!-- Dropdown Card Example -->
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-                <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                <!-- Dropdown Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card">
+                        <img class="card-img-top card-img" src="{{ asset('img/placeholder/placeholder-image-card.webp') }}" alt="Group Image">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5 class="card-title font-weight-bold text-primary">{{ $group->name }}</h5>
+                            </div>
+                            <div class="col-md-4 ml-auto text-uppercase">
+                                <h6>{{ $group->industry }}</h6>
+                            </div>
+                        </div>
+                        <p class="card-text">{{ $group->description }}</p>
+                        <a href="/groups/add/{{ $group->id }}" class="btn btn-primary">Join</a>
+                        <hr>
+                        <p class="card-text"><small class="text-muted">Created at: {{ $group->created_at }}</small></p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                Dropdown menus can be placed in the card header in order to extend the functionality
-                of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
-                icon in the card header can be clicked on in order to toggle a dropdown menu.
-            </div>
         </div>
-    </div>
+    @endif
+@endforeach
 
-    <div class="col-lg-3">
-        <!-- Dropdown Card Example -->
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-                <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                Dropdown menus can be placed in the card header in order to extend the functionality
-                of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
-                icon in the card header can be clicked on in order to toggle a dropdown menu.
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3">
-        <!-- Dropdown Card Example -->
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-                <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                Dropdown menus can be placed in the card header in order to extend the functionality
-                of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
-                icon in the card header can be clicked on in order to toggle a dropdown menu.
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3">
-
-        <!-- Dropdown Card Example -->
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-                <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                Dropdown menus can be placed in the card header in order to extend the functionality
-                of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
-                icon in the card header can be clicked on in order to toggle a dropdown menu.
-            </div>
-        </div>
-    </div>
-
-</div>
 @endsection

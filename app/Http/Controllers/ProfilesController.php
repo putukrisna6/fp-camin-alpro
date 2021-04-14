@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ProfilesController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -75,11 +79,13 @@ class ProfilesController extends Controller
             'phone' => 'required',
             'profession' => 'required',
             'location' => 'required',
+            'education' => '',
+            'expertise' => '',
         ]);
 
         auth()->user()->profile->update($data);
 
-        return redirect("/profile");
+        return redirect("/profile/display");
     }
 
     /**

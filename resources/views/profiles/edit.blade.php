@@ -47,6 +47,30 @@
             @enderror
         </div>
 
+        <div class="form-group">
+            <label for="education" class="">Education</label>
+            <input id="education"
+                    type="text"
+                    class="form-control @error('education') is-invalid @enderror"
+                    name="education"
+                    value="{{ old('education') ?? $user->profile->education}}"
+                    autocomplete="education" autofocus>
+            @error('education')
+                <strong>{{ $message }}</strong>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="expertise">Expertise</label>
+            <select class="form-control @error('expertise') is-invalid @enderror"
+                    id="expertise"
+                    name="expertise">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+        </div>
+
         <button class="btn btn-primary">Save</button>
 
     </form>

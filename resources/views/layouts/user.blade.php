@@ -83,6 +83,12 @@
                     <span>Calendar</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('groups/join') }}">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Join</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

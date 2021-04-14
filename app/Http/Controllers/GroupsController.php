@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,22 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        return view('groups.index');
+        $groups = Group::all();
+
+        return view('groups.index', compact('groups'));
+    }
+
+    public function users()
+    {
+        $groups = Group::with('users')->get();
+
+        return view('groups.group_user', compact('groups'));
+    }
+
+    public function addUser(Group $group) {
+        $group->users()->attach(Auth::user());
+
+        return view('welcome');
     }
 
     /**
@@ -23,7 +43,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups.create');
     }
 
     /**
@@ -34,7 +54,21 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'industry' => 'required',
+            'visibility' => 'required',
+        ]);
+
+        Group::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'industry' => $data['industry'],
+            'visibility' => $data['visibility'],
+        ]);
+
+        return redirect('groups/list');
     }
 
     /**
@@ -45,7 +79,7 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

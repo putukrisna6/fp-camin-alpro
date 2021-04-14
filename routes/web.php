@@ -37,5 +37,9 @@ Route::prefix('profile')->group(function () {
 });
 
 Route::prefix('groups')->group(function () {
-    Route::get('/list', [GroupsController::class, 'index']);
+    Route::get('/list', [GroupsController::class, 'users']);
+    Route::get('/join', [GroupsController::class, 'index']);
+    Route::get('/create', [GroupsController::class, 'create']);
+    Route::post('/', [GroupsController::class, 'store']);
+    Route::get('/add/{group}', [GroupsController::class, 'addUser']);
 });
