@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,8 @@ class GroupsController extends Controller
 
     public function users()
     {
-        $groups = Group::with('users')->get();
+        $user_id = Auth::user()->id;
+        $groups = User::find($user_id)->groups;
 
         return view('groups.group_user', compact('groups'));
     }

@@ -6,42 +6,40 @@
 </div>
 
 
+<div class="row">
+    @foreach ($groups as $group)
+        <div class="col-md-6 p-4">
+            <!-- Dropdown Card Example -->
+            <div class="card shadow mb-2">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 
-@foreach ($groups as $group)
-    @foreach ($group->users as $user)
-        @if ($user->id == Auth::user()->id)
-            <div class="row">
-                <div class="col-lg-3">
-                    <!-- Dropdown Card Example -->
-                    <div class="card shadow mb-4">
-                        <!-- Card Header - Dropdown -->
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-                            <h6 class="m-0 font-weight-bold text-primary">{{ $group->name }}</h6>
-                            <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card Body -->
-                        <div class="card-body">
-                            <ul>
-                                <li>{{ $user->name }}</li>
-                            </ul>
+                    <h4 class="m-0 font-weight-bold text-primary"><a href="#">{{ $group->name }}</a></h4>
+                    <h6 class="m-0 ml-auto mr-3 text-uppercase">{{ $group->industry }} | {{ $group->visibility }}</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Leave</a>
                         </div>
                     </div>
                 </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <p>
+                        Group Members
+                    </p>
+                    <hr>
+                    <ul>
+                        @foreach ($group->users as $user)
+                            <li>{{ $user->name }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-        @endif
+        </div>
     @endforeach
-@endforeach
+</div>
 
 @endsection

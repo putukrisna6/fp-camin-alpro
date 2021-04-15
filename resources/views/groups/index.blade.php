@@ -6,9 +6,9 @@
     <a href="{{ url('groups/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50 mr-1"></i> Add Group</a>
 </div>
 
-@foreach ($groups as $group)
-    @if ($group->visibility == 'Public')
-        <div class="row">
+<div class="row">
+    @foreach ($groups as $group)
+        @if ($group->visibility == 'Public')
             <div class="col-md-6 p-3">
 
                 <!-- Dropdown Card Example -->
@@ -32,8 +32,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    @endif
-@endforeach
+        @endif
+    @endforeach
+</div>
+
 
 @endsection
