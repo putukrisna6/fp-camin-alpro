@@ -4,7 +4,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 ml-2">Your Profile</h1>
 </div>
-<div class="emp-profile mt-0">
+<div class="emp-profile shadow">
     <div class="row">
         <div class="col-md-4">
             <div class="profile-img mb-5">

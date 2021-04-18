@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-    <div class="jumbotron">
+    <div class="jumbotron shadow-lg bg-navbar text-white">
         <a href="#" class="btn btn-info btn-icon-split mb-3">
             <span class="icon text-white-50">
                 <i class="fas fa-info-circle"></i>
@@ -9,8 +9,8 @@
             <span class="text">{{ $mytime }}</span>
         </a>
         <h1 class="display-6">{{ $greetings }}, {{ Auth::user()->name }}</h1>
-        <p class="lead">Take a time to do something productive today.</p>
-        <hr class="my-4">
+        <p class="lead">Spare a moment to do something productive today.</p>
+        <hr class="my-4" style="border-top: 1px solid white;">
     </div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800 ml-2">While you were away</h1>

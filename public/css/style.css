@@ -36,6 +36,12 @@
     margin: 10rem auto;
 }
 
+.group-side-bar {
+    /* padding: 5%; */
+    border-radius: 0.5em;
+    background: #25274D;
+}
+
 .emp-profile{
     padding: 3%;
     margin-top: 3%;

@@ -81,7 +81,9 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
+        $group = Group::find($id);
 
+        return view('groups.show', compact('group'));
     }
 
     /**
@@ -90,9 +92,9 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Group $group)
     {
-        //
+        return view('groups.edit', compact('group'));
     }
 
     /**
@@ -104,7 +106,28 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $group = Group::find($id);
+
+        // dd($group);
+
+        $data = request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'industry' => 'required',
+            'visibility' => 'required',
+        ]);
+
+        // dd($data);
+
+        $group->name = $request->name;
+        $group->description = $request->description;
+        $group->industry = $request->industry;
+        $group->visibility = $request->visibility;
+        $group->save();
+
+        // dd($group);
+
+        return redirect("/groups/show/$id");
     }
 
     /**

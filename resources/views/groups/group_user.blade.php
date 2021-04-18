@@ -14,7 +14,7 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 
-                    <h4 class="m-0 font-weight-bold text-primary"><a href="#">{{ $group->name }}</a></h4>
+                    <h4 class="m-0 font-weight-bold text-primary"><a href="/groups/show/{{$group->id}}">{{ $group->name }}</a></h4>
                     <h6 class="m-0 ml-auto mr-3 text-uppercase">{{ $group->industry }} | {{ $group->visibility }}</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

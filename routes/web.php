@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\ProfilesController;
 use Illuminate\Support\Facades\Auth;
@@ -42,4 +43,12 @@ Route::prefix('groups')->group(function () {
     Route::get('/create', [GroupsController::class, 'create']);
     Route::post('/', [GroupsController::class, 'store']);
     Route::get('/add/{group}', [GroupsController::class, 'addUser']);
+    Route::get('/show/{group}', [GroupsController::class, 'show']);
+    Route::get('/edit/{group}', [GroupsController::class, 'edit']);
+    Route::patch('/{group}', [GroupsController::class, 'update']);
+});
+
+Route::prefix('calendar')->group(function() {
+    Route::get('/', [CalendarController::class, 'index']);
+    Route::post('/action', [CalendarController::class, 'action']);
 });
