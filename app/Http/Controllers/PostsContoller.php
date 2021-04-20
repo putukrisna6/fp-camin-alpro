@@ -21,9 +21,9 @@ class PostsContoller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($group_id)
     {
-        //
+        return view('posts.create', compact('group_id'));
     }
 
     /**
@@ -34,7 +34,19 @@ class PostsContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(request()->all());
+
+        $data = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'group_id' => 'required'
+        ]);
+
+        // dd($data);
+
+        auth()->user()->posts()->create($data);
+
+        return redirect('groups/show/'. $data['group_id']);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,9 +82,22 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        $group = Group::find($id);
+        $user_id = Auth::user()->id;
 
-        return view('groups.show', compact('group'));
+        $group = Group::whereHas('users', function($q) use($user_id) {
+            $q->whereIn('id', [$user_id]);
+        })->get();
+
+        $group = $group->where('id', '=', $id);
+
+        if ($group->isEmpty()) {
+            return abort(404);
+        }
+
+        $posts = Post::where('group_id', '=', $id)->get();
+        $posts = $posts->sortByDesc('created_at');
+
+        return view('groups.show', compact('group', 'id', 'posts'));
     }
 
     /**

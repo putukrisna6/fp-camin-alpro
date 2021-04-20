@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GroupsController;
+use App\Http\Controllers\PostsContoller;
 use App\Http\Controllers\ProfilesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -51,4 +52,9 @@ Route::prefix('groups')->group(function () {
 Route::prefix('calendar')->group(function() {
     Route::get('/', [CalendarController::class, 'index']);
     Route::post('/action', [CalendarController::class, 'action']);
+});
+
+Route::prefix('posts')->group(function() {
+    Route::get('/create/{group}', [PostsContoller::class, 'create']);
+    Route::post('/', [PostsContoller::class, 'store']);
 });
