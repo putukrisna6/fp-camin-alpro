@@ -10,7 +10,7 @@
     @foreach ($groups as $group)
         <div class="col-md-6 p-4">
             <!-- Dropdown Card Example -->
-            <div class="card shadow mb-2">
+            <div class="card shadow mb-2 border-bottom-info">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 

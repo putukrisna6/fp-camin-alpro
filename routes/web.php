@@ -57,4 +57,5 @@ Route::prefix('calendar')->group(function() {
 Route::prefix('posts')->group(function() {
     Route::get('/create/{group}', [PostsContoller::class, 'create']);
     Route::post('/', [PostsContoller::class, 'store']);
+    Route::get('/delete/{post}', [PostsContoller::class, 'destroy']);
 });

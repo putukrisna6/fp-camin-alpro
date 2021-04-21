@@ -27,7 +27,8 @@
                 </div>
                 <div class="card-footer rounded-bottom text-dark text-left">
                     <a href="/groups/edit/{{ $g->id }}" class="btn btn-success">Edit</a>
-                    <a href="#" class="btn btn-danger">Leave</a>
+                    <a href="#" class="btn btn-warning">Leave</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
@@ -36,7 +37,7 @@
     <div class="col-md-8">
         @foreach ($posts as $p)
             <div class="row d-block pl-3 pr-3">
-                <div class="card mb-4 shadow">
+                <div class="card mb-4 shadow border-left-primary">
                     <div class="card-header">
                         <div class="media flex-wrap w-100 align-items-center">
                             <img src="{{ asset('img/undraw_profile.svg') }}" class="d-block ui-w-40 rounded-circle" style="max-height: 3rem" alt="">
@@ -47,10 +48,22 @@
                                 <div><strong>{{ $p->user->profile->profession }}</strong></div>
                                 <div>{{ $p->user->profile->education }}</div>
                             </div>
+                            <div class="ml-3 dropdown no-arrow">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                </a>
+                                @if ($p->user->id == Auth::user()->id)
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="/posts/delete/{{ $p->id }}">Delete</a>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
+
                     </div>
                     <div class="card-body">
-                        <p> {{ $p->description }}
+                        <h5>{{ $p->title }}</h5>
+                        <p>{{ $p->description }}
                         </p>
                     </div>
                     <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">

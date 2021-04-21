@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostsContoller extends Controller
@@ -91,6 +92,18 @@ class PostsContoller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $posts = Post::where('id', '=', $id)->get();
+
+        $group_id = 0;
+
+        foreach( $posts as $p ) {
+            $group_id = $p['group_id'];
+        }
+
+        $posts = Post::where('id', '=', $id)->delete();
+
+        // dd($group_id);
+
+        return redirect('groups/show/'. $group_id);
     }
 }
