@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800 ml-2">Start collaborating</h1>
+    <h1 class="h3 mb-0 text-gray-800 ml-2"><i class="fas fa-code-branch fa-sm mr-1"></i> Start collaborating</h1>
     <a href="{{ url('groups/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50 mr-1"></i> Add Group</a>
 </div>
 
@@ -17,17 +17,17 @@
                         <img class="card-img-top card-img" src="{{ asset('img/placeholder/placeholder-image-card.webp') }}" alt="Group Image">
                         <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <h5 class="card-title font-weight-bold text-primary">{{ $group->name }}</h5>
                             </div>
-                            <div class="col-md-4 ml-auto text-uppercase">
+                            <div class="col-md-6 pr-4 text-uppercase d-flex justify-content-md-end">
                                 <h6>{{ $group->industry }}</h6>
                             </div>
                         </div>
                         <p class="card-text">{{ $group->description }}</p>
-                        <a href="/groups/add/{{ $group->id }}" class="btn btn-primary">Join</a>
+                        <a href="/groups/add/{{ $group->id }}" class="btn btn-primary"><i class="fas fa-sign-in-alt fa-sm text-white-50 mr-1"></i> Join</a>
                         <hr>
-                        <p class="card-text"><small class="text-muted">Created at: {{ $group->created_at }}</small></p>
+                        <p class="card-text"><small class="text-muted"><i class="fas fa-clock fa-sm mr-1"></i> Created at: {{ $group->created_at }}</small></p>
                         </div>
                     </div>
                 </div>

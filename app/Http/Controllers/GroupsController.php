@@ -36,7 +36,7 @@ class GroupsController extends Controller
     public function addUser(Group $group) {
         $group->users()->attach(Auth::user());
 
-        return view('welcome');
+        return redirect('groups/list');
     }
 
     /**
@@ -63,15 +63,8 @@ class GroupsController extends Controller
             'industry' => 'required',
             'visibility' => 'required',
         ]);
-
-        Group::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'industry' => $data['industry'],
-            'visibility' => $data['visibility'],
-        ]);
-
-        return redirect('groups/list');
+        Group::create($data);
+        return redirect('groups/join');
     }
 
     /**
@@ -86,11 +79,9 @@ class GroupsController extends Controller
 
         $group = Group::whereHas('users', function($q) use($user_id) {
             $q->whereIn('id', [$user_id]);
-        })->get();
+        })->where('id', '=', $id)->get()->first();
 
-        $group = $group->where('id', '=', $id);
-
-        if ($group->isEmpty()) {
+        if ($group == NULL) {
             return abort(404);
         }
 
@@ -120,27 +111,13 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $group = Group::find($id);
-
-        // dd($group);
-
         $data = request()->validate([
             'name' => 'required',
             'description' => 'required',
             'industry' => 'required',
             'visibility' => 'required',
         ]);
-
-        // dd($data);
-
-        $group->name = $request->name;
-        $group->description = $request->description;
-        $group->industry = $request->industry;
-        $group->visibility = $request->visibility;
-        $group->save();
-
-        // dd($group);
-
+        Group::find($id)->update($data);
         return redirect("/groups/show/$id");
     }
 
@@ -152,6 +129,31 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user_id = Auth::user()->id;
+
+        $group = Group::whereHas('users', function($q) use($user_id) {
+            $q->whereIn('id', [$user_id]);
+        })->where('id', '=', $id)->get()->first();
+
+        if ($group == NULL) {
+            return abort(404);
+        }
+
+        $users = User::whereHas('groups', function($q) use($id) {
+            $q->whereIn('id', [$id]);
+        })->get();
+
+        foreach($users as $user) {
+            $user->groups()->detach($id);
+        }
+        $group->delete();
+
+        return redirect('groups/list');
+    }
+
+    public function leave($id)
+    {
+        Auth::user()->groups()->detach($id);
+        return redirect('groups/list');
     }
 }

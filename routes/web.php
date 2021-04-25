@@ -4,6 +4,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\PostsContoller;
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\RepliesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,8 @@ Route::prefix('groups')->group(function () {
     Route::get('/show/{group}', [GroupsController::class, 'show']);
     Route::get('/edit/{group}', [GroupsController::class, 'edit']);
     Route::patch('/{group}', [GroupsController::class, 'update']);
+    Route::get('/delete/{group}', [GroupsController::class, 'destroy']);
+    Route::get('/leave/{group}', [GroupsController::class, 'leave']);
 });
 
 Route::prefix('calendar')->group(function() {
@@ -59,3 +62,5 @@ Route::prefix('posts')->group(function() {
     Route::post('/', [PostsContoller::class, 'store']);
     Route::get('/delete/{post}', [PostsContoller::class, 'destroy']);
 });
+
+Route::post('/reply/{post}', [RepliesController::class, 'store']);

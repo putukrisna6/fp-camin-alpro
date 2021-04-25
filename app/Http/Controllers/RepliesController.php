@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Reply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PostsContoller extends Controller
+class RepliesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +24,9 @@ class PostsContoller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($group_id)
+    public function create()
     {
-        return view('posts.create', compact('group_id'));
+        //
     }
 
     /**
@@ -34,17 +35,20 @@ class PostsContoller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
+        // dd($post['group_id']);
         $data = request()->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'group_id' => 'required'
+            'content' => 'required',
         ]);
 
-        auth()->user()->posts()->create($data);
+        Reply::create([
+            'content' => $data['content'],
+            'user_id' => Auth::user()->id,
+            'post_id' => $post->id,
+        ]);
 
-        return redirect('groups/show/'. $data['group_id']);
+        return redirect("/groups/show/$post->group_id");
     }
 
     /**
@@ -89,18 +93,6 @@ class PostsContoller extends Controller
      */
     public function destroy($id)
     {
-        $posts = Post::where('id', '=', $id)->get();
-
-        $group_id = 0;
-
-        foreach( $posts as $p ) {
-            $group_id = $p['group_id'];
-        }
-
-        $posts = Post::where('id', '=', $id)->delete();
-
-        Reply::where('post_id', '=', $id)->delete();
-
-        return redirect('groups/show/'. $group_id);
+        //
     }
 }

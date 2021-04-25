@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800 ml-2">Your Profile</h1>
+    <h1 class="h3 mb-0 text-gray-800 ml-2"><i class="fas fa-id-badge fa-sm mr-1"></i> Your Profile</h1>
 </div>
 <div class="emp-profile shadow">
     <div class="row">
@@ -31,8 +31,7 @@
             </div>
         </div>
         <div class="col-md-2">
-            {{-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> --}}
-            <a href="/profile/{{ Auth::user()->id }}/edit" class="profile-edit-btn">Edit Profile</a>
+            <a href="/profile/{{ Auth::user()->id }}/edit" class="profile-edit-btn"><i class="fas fa-edit fa-sm mr-1"></i> Edit Profile</a>
         </div>
     </div>
     <div class="row">
