@@ -12,6 +12,10 @@ class Group extends Model
 
     protected $guarded = [];
 
+    public function groupImage() {
+        return ($this->image) ? '/storage/' . $this->image : '/img/placeholder/placeholder-image-card.webp';
+    }
+
     protected static function boot() {
         parent::boot();
 
@@ -22,7 +26,15 @@ class Group extends Model
         );
     }
 
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+
     public function users() {
         return $this->belongsToMany(User::class);
+    }
+
+    public function events() {
+        return $this->hasMany(Event::class);
     }
 }

@@ -49,6 +49,7 @@ class User extends Authenticatable
             function($user) {
                 $user->profile()->create([
                     'profession' => $user->username,
+                    'gender' => 'Others',
                 ]);
             }
         );
@@ -68,5 +69,9 @@ class User extends Authenticatable
 
     public function replies() {
         return $this->hasMany(Reply::class);
+    }
+
+    public function events() {
+        return $this->hasMany(Event::class);
     }
 }

@@ -52,6 +52,15 @@
             </select>
         </div>
 
+        <div class="form-group">
+            <label for="image">Group Image</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+
+            @error('image')
+                <strong>{{ $message }}</strong>
+            @enderror
+        </div>
+
         <button class="btn btn-primary">Create</button>
 
     </form>

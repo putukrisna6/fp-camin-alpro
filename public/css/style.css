@@ -53,8 +53,7 @@
     text-align: center;
 }
 .profile-img img{
-    width: 70%;
-    max-height: 12rem;
+    max-width: 40%;
 }
 .profile-img .file {
     position: relative;
@@ -138,4 +137,10 @@
 .card-img {
     height: 12rem;
     object-fit: cover;
+}
+
+.myimg {
+    background: #464866;
+    object-fit: cover;
+    border-radius: 50%;
 }

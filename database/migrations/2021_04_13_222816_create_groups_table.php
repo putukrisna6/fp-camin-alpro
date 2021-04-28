@@ -19,6 +19,7 @@ class CreateGroupsTable extends Migration
             $table->string('description');
             $table->enum('industry', ['Tech', 'Banking', 'Healthcare', 'Education']);
             $table->enum('visibility', ['Public', 'Private']);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

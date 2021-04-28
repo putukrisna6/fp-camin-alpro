@@ -62,8 +62,22 @@ class GroupsController extends Controller
             'description' => 'required',
             'industry' => 'required',
             'visibility' => 'required',
+            'image' => '',
         ]);
-        Group::create($data);
+
+        if (request('image')) {
+            request()->validate([
+                'image' => 'image',
+            ]);
+
+            $imagePath = request('image')->store('uploads/groups', 'public');
+            $imageArray = ['image' => $imagePath];
+        }
+
+        Group::create(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
         return redirect('groups/join');
     }
 

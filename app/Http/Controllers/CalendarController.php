@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CalendarController extends Controller
 {
@@ -29,7 +30,9 @@ class CalendarController extends Controller
     			$event = Event::create([
     				'title'		=>	$request->title,
     				'start'		=>	$request->start,
-    				'end'		=>	$request->end
+    				'end'		=>  $request->end,
+                    'user_id'   =>  Auth::user()->id,
+                    'group_id'  => 1,
     			]);
 
     			return response()->json($event);
@@ -40,7 +43,9 @@ class CalendarController extends Controller
     			$event = Event::find($request->id)->update([
     				'title'		=>	$request->title,
     				'start'		=>	$request->start,
-    				'end'		=>	$request->end
+    				'end'		=>	$request->end,
+                    'user_id'   =>  Auth::user()->id,
+                    'group_id'  => 1,
     			]);
 
     			return response()->json($event);

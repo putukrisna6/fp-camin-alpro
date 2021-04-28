@@ -7,8 +7,8 @@
 <div class="emp-profile shadow">
     <div class="row">
         <div class="col-md-4">
-            <div class="profile-img mb-5">
-                <img src="{{ asset('img/undraw_profile.svg') }}" class="d-inline-block align-top" alt="">
+            <div class="profile-img mb-0">
+                <img src="{{ Auth::user()->profile->profileImage() }}" class="myimg d-inline-block align-top" alt="">
             </div>
         </div>
         <div class="col-md-6">
@@ -66,12 +66,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Profession</label>
+                                    <label>Gender</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{ Auth::user()->profile->profession }}</p>
+                                    <p>{{ Auth::user()->profile->gender }}</p>
                                 </div>
                             </div>
+
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="row">
@@ -80,6 +81,22 @@
                         </div>
                         <div class="col-md-6">
                             <p>{{ Auth::user()->profile->education }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Profession</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ Auth::user()->profile->profession }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Industry</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ Auth::user()->profile->industry }}</p>
                         </div>
                     </div>
                     <div class="row">

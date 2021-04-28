@@ -14,7 +14,7 @@
                 <!-- Dropdown Card Example -->
                 <div class="card shadow mb-4">
                     <div class="card">
-                        <img class="card-img-top card-img" src="{{ asset('img/placeholder/placeholder-image-card.webp') }}" alt="Group Image">
+                        <img class="card-img-top card-img" src="{{ $group->groupImage() }}" alt="Group Image">
                         <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">

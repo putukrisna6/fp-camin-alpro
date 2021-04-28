@@ -61,8 +61,6 @@ class ProfilesController extends Controller
      */
     public function edit(User $user)
     {
-        // $this->authorize('update', $user->profile);
-
         return view('profiles.edit', compact('user'));
     }
 
@@ -79,11 +77,26 @@ class ProfilesController extends Controller
             'phone' => 'required',
             'profession' => 'required',
             'location' => 'required',
-            'education' => '',
+            'education' => 'required',
+            'industry' => 'required',
             'expertise' => '',
+            'gender' => '',
+            'image' => '',
         ]);
 
-        auth()->user()->profile->update($data);
+        if (request('image')) {
+            request()->validate([
+                'image' => 'image',
+            ]);
+
+            $imagePath = request('image')->store('uploads/profiles', 'public');
+            $imageArray = ['image' => $imagePath];
+        }
+
+        auth()->user()->profile->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
 
         return redirect("/profile/display");
     }

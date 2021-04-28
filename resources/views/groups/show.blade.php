@@ -19,9 +19,9 @@
                     <p class="text-muted mb-0">Visibility</p>
                     <hr class="m-0 mb-2">
                     <p class="card-text">{{ $group->visibility }}</p class="">
-                    <p class="text-muted mb-0">Created at</p>
+                    <p class="text-muted mb-0">Created on</p>
                     <hr class="m-0 mb-2">
-                    <p class="card-text">{{ $group->created_at }}</p class="">
+                    <p class="card-text">{{ date('D, d M Y', strtotime($group->created_at)) }}</p class="">
                 </div>
                 <div class="text-left bg-white text-dark p-3 rounded-lg">
                     <p class="text-muted mb-0">Events</p>
@@ -52,10 +52,10 @@
                 <div class="card mb-4 shadow border-left-primary">
                     <div class="card-header">
                         <div class="media flex-wrap w-100 align-items-center">
-                            <img src="{{ asset('img/undraw_profile.svg') }}" class="d-block ui-w-40 rounded-circle" style="max-height: 3rem" alt="">
+                            <img src="{{ $p->user->profile->profileImage() }}" class="d-block ui-w-40 rounded-circle bg-navbar" style="max-height: 3rem" alt="">
                             <div class="media-body ml-3">
                                 <a href="#">{{ $p->user->name }}</a>
-                                <div class="text-muted small"> {{ date('D, d M Y H:i:s', strtotime($p->created_at)) }}</div>
+                                <div class="text-muted small"> {{ date('D, d M Y H:i', strtotime($p->created_at)) }}</div>
                             </div>
                             <div class="text-muted small ml-3 text-right">
                                 <div><strong>{{ $p->user->profile->profession }}</strong></div>

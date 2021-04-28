@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->timestamps();
 
-            $table->index('user_id');
+            $table->index('user_id', 'group_id');
         });
     }
 

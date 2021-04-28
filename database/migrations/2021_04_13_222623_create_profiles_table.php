@@ -20,7 +20,10 @@ class CreateProfilesTable extends Migration
             $table->string('profession')->nullable();
             $table->string('location')->nullable();
             $table->string('education')->nullable();
+            $table->string('industry')->nullable();
             $table->enum('expertise', ['Beginner', 'Intermediate', 'Advanced'])->nullable();
+            $table->enum('gender', ['Male', 'Female', 'Others'])->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->index('user_id');

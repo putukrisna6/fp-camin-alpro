@@ -61,6 +61,19 @@
         </div>
 
         <div class="form-group">
+            <label for="industry" class="">Industry</label>
+            <input id="industry"
+                    type="text"
+                    class="form-control @error('industry') is-invalid @enderror"
+                    name="industry"
+                    value="{{ old('industry') ?? $user->profile->industry}}"
+                    autocomplete="industry" autofocus>
+            @error('industry')
+                <strong>{{ $message }}</strong>
+            @enderror
+        </div>
+
+        <div class="form-group">
             <label for="expertise">Expertise</label>
             <select class="form-control @error('expertise') is-invalid @enderror"
                     id="expertise"
@@ -71,8 +84,27 @@
             </select>
         </div>
 
-        <button class="btn btn-primary">Save</button>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control @error('gender') is-invalid @enderror"
+                    id="gender"
+                    name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+            </select>
+        </div>
 
+        <div class="form-group">
+            <label for="image">Profile Image</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+
+            @error('image')
+                <strong>{{ $message }}</strong>
+            @enderror
+        </div>
+
+        <button class="btn btn-primary">Save</button>
     </form>
 </div>
 @endsection
