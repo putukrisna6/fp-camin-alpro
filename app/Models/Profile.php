@@ -15,10 +15,10 @@ class Profile extends Model
         $default = '/img/undraw_rocket.svg';
 
         if ($this->gender == 'Male') {
-            $default = '/img/undraw_profile.svg';
+            $default = '/img/undraw_profile_2.svg';
         }
         else if ($this->gender == 'Female') {
-            $default = '/img/undraw_profile_1.svg';
+            $default = '/img/undraw_profile_3.svg';
         }
 
         return ($this->image) ? '/storage/' . $this->image : $default;

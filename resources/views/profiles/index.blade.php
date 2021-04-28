@@ -17,7 +17,7 @@
                             {{ Auth::user()->name }}
                         </h5>
                         <h6>
-                            {{ Auth::user()->profile->location }}
+                            <i class="fas fa-map-marker-alt fa-sm mr-1"></i> {{ Auth::user()->profile->location }}
                         </h6>
                         <p class="proile-rating"></p>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

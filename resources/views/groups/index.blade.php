@@ -21,7 +21,7 @@
                                 <h5 class="card-title font-weight-bold text-primary">{{ $group->name }}</h5>
                             </div>
                             <div class="col-md-6 pr-4 text-uppercase d-flex justify-content-md-end">
-                                <h6>{{ $group->industry }}</h6>
+                                <h6><i class="fas fa-tag fa-sm mr-1"></i> {{ $group->industry }}</h6>
                             </div>
                         </div>
                         <p class="card-text">{{ $group->description }}</p>

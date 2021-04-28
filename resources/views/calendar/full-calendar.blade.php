@@ -8,7 +8,9 @@
 <div class="emp-profile shadow">
     <div id="calendar" class="p-5"></div>
 </div>
-
-
 @endsection
 
+@section('date-script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+    <script src="{{ asset('js/calendar/calendar.js') }}" ></script>
+@endsection

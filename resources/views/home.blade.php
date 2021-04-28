@@ -17,11 +17,11 @@
     <div class="jumbotron shadow-lg bg-navbar text-white">
         <a href="#" class="btn btn-info btn-icon-split mb-3">
             <span class="icon text-white-50">
-                <i class="fas fa-info-circle"></i>
+                <i class="fas fa-clock"></i>
             </span>
             <span class="text" id="time"></span>
         </a>
-        <h1 class="display-6">{{ $greetings }}, {{ Auth::user()->name }}</h1>
+        <h1 class="display-6"><i class="fas fa-door-open fa-sm mr-1"></i> {{ $greetings }}, {{ Auth::user()->name }}</h1>
         <p class="lead">Spare a moment to do something productive today.</p>
         <hr class="my-4" style="border-top: 1px solid white;">
     </div>

@@ -126,7 +126,7 @@
                             @error('content')
                                 <strong>{{ $message }}</strong>
                             @enderror
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Reply</button>
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-reply fa-sm mr-1"></i> Reply</button>
                         </form>
                     </div>
                 </div>
