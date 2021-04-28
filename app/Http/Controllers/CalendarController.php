@@ -12,8 +12,11 @@ class CalendarController extends Controller
     {
         if($request->ajax())
     	{
+            $user_id = Auth::user()->id;
+
     		$data = Event::whereDate('start', '>=', $request->start)
                        ->whereDate('end',   '<=', $request->end)
+                       ->where('user_id', '=', $user_id)
                        ->get(['id', 'title', 'start', 'end']);
             return response()->json($data);
     	}
