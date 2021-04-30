@@ -49,6 +49,8 @@ $(document).ready(function () {
             var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
             var title = event.title;
             var id = event.id;
+            var user_id = event.user_id;
+            var group_id = event.group_id;
             $.ajax({
                 url:"/calendar/action",
                 type:"POST",
@@ -56,6 +58,8 @@ $(document).ready(function () {
                     title: title,
                     start: start,
                     end: end,
+                    user_id: user_id,
+                    group_id: group_id,
                     id: id,
                     type: 'update'
                 },
@@ -72,6 +76,11 @@ $(document).ready(function () {
             var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
             var title = event.title;
             var id = event.id;
+            var user_id = event.user_id;
+            var group_id = event.group_id;
+
+            console.log(user_id);
+
             $.ajax({
                 url:"/calendar/action",
                 type:"POST",
@@ -79,6 +88,8 @@ $(document).ready(function () {
                     title: title,
                     start: start,
                     end: end,
+                    user_id: user_id,
+                    group_id: group_id,
                     id: id,
                     type: 'update'
                 },

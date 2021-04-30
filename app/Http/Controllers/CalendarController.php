@@ -49,12 +49,14 @@ class CalendarController extends Controller
 
     		if($request->type == 'update')
     		{
+                $data = Event::where("id", "=", $request->id)->first();
+
     			$event = Event::find($request->id)->update([
-    				'title'		=>	$request->title,
+    				'title'		=>	$data['title'],
     				'start'		=>	$request->start,
     				'end'		=>	$request->end,
-                    'user_id'   =>  Auth::user()->id,
-                    'group_id'  =>  0,
+                    'user_id'   =>  $data['user_id'],
+                    'group_id'  =>  $data['group_id'],
     			]);
 
     			return response()->json($event);
@@ -70,6 +72,10 @@ class CalendarController extends Controller
     }
 
     public function create($group_id) {
+        $data = Event::where("id", "=", 17)->first();
+
+        // dd($data['start']);
+
         return view('calendar.create', compact('group_id'));
     }
 
