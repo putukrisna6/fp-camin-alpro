@@ -34,7 +34,13 @@ class GroupsController extends Controller
     }
 
     public function addUser(Group $group) {
-        $group->users()->attach(Auth::user());
+        $data = $group->users->find(Auth::user()->id);
+        if ($data != NULL) {
+            return redirect('groups/show/'.$group->id);
+        }
+        else {
+            $group->users()->attach(Auth::user());
+        }
 
         return redirect('groups/list');
     }

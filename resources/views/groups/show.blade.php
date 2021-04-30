@@ -39,9 +39,9 @@
                 </div>
             </div>
             <div class="card-footer rounded-bottom text-dark text-left">
-                <a href="/groups/edit/{{ $group->id }}" class="btn btn-success"><i class="fas fa-edit fa-sm text-white-50 mr-1"></i> Edit</a>
-                <a href="/groups/leave/{{ $group->id }}" class="btn btn-warning"><i class="fas fa-sign-out-alt fa-sm text-white-50 mr-1"></i> Leave</a>
-                <a href="/groups/delete/{{ $group->id }}" class="btn btn-danger"><i class="fas fa-trash-alt fa-sm text-white-50 mr-1"></i> Delete</a>
+                <a href="/groups/edit/{{ $group->id }}" class="btn btn-success mb-2 mr-1"><i class="fas fa-edit fa-sm text-white-50 mr-1"></i> Edit</a>
+                <a href="/groups/leave/{{ $group->id }}" class="btn btn-warning mb-2 mr-1"><i class="fas fa-sign-out-alt fa-sm text-white-50 mr-1"></i> Leave</a>
+                <a href="/groups/delete/{{ $group->id }}" class="btn btn-danger mb-2 mr-1"><i class="fas fa-trash-alt fa-sm text-white-50 mr-1"></i> Delete</a>
             </div>
         </div>
     </div>
