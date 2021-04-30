@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\PostsContoller;
 use App\Http\Controllers\ProfilesController;
@@ -64,3 +65,6 @@ Route::prefix('posts')->group(function() {
 });
 
 Route::post('/reply/{post}', [RepliesController::class, 'store']);
+
+Route::get('change-password', [ChangePasswordController::class, 'index']);
+Route::post('change-password', [ChangePasswordController::class, 'store'])->name('change.password');

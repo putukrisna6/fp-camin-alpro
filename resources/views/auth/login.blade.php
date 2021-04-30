@@ -10,7 +10,17 @@
 
             <label for="email" class="sr-only">{{ __('E-Mail Address') }}</label>
             <div>
-                <input type="email" id="email" class="form-control m-1 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="example@mail.com">
+                <input
+                    type="email"
+                    id="email"
+                    class="form-control m-1
+                    @error('email')
+                        is-invalid
+                    @enderror"
+                    name="email"
+                    value="{{ old('email') }}"
+                    required autocomplete="email"
+                    autofocus placeholder="example@mail.com">
 
                 @error('email')
                     <span class="invalid-feedback" role="alert">
