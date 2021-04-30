@@ -10,11 +10,12 @@
     @foreach ($groups as $group)
         @if ($group->visibility == 'Public')
             <div class="col-md-6 p-3">
-
                 <!-- Dropdown Card Example -->
                 <div class="card shadow mb-4">
                     <div class="card">
-                        <img class="card-img-top card-img" src="{{ $group->groupImage() }}" alt="Group Image">
+                        <a href="{{ $group->groupImage() }}">
+                            <img class="card-img-top card-img" src="{{ $group->groupImage() }}" alt="{{ $group->name }}">
+                        </a>
                         <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -35,6 +36,4 @@
         @endif
     @endforeach
 </div>
-
-
 @endsection

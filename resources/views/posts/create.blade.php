@@ -33,7 +33,6 @@
         </div>
 
         <div class="form-group">
-            {{-- <label for="description" class="">Post Description</label> --}}
             <input id="group_id"
                     type="hidden"
                     class="form-control @error('group_id') is-invalid @enderror"
@@ -44,9 +43,7 @@
                 <strong>{{ $message }}</strong>
             @enderror
         </div>
-
         <button class="btn btn-primary">Create</button>
-
     </form>
 </div>
 

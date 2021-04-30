@@ -33,7 +33,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <a href="#" class="btn btn-info"><i class="fas fa-bookmark fa-sm text-white-50 mr-1"></i> Schedule an event</a>
+                            <a href="/calendar/create/{{ $group->id }}" class="btn btn-info"><i class="fas fa-bookmark fa-sm text-white-50 mr-1"></i> Schedule an event</a>
                         </div>
                     </div>
                 </div>

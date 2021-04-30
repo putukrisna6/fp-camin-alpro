@@ -55,6 +55,8 @@ Route::prefix('groups')->group(function () {
 
 Route::prefix('calendar')->group(function() {
     Route::get('/', [CalendarController::class, 'index']);
+    Route::get('/create/{group}', [CalendarController::class, 'create']);
+    Route::post('/', [CalendarController::class, 'store']);
     Route::post('/action', [CalendarController::class, 'action']);
 });
 
