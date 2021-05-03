@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -37,8 +41,25 @@ class HomeController extends Controller
             $greetings = "Good Evening";
         }
 
-        $mytime = now();
+        $right_now = now()->toDateTimeString();
 
-        return view('home', compact('greetings', 'mytime'));
+        // dd(now()->toDateTimeString());
+
+        $user_id = Auth::user()->id;
+
+        $groups = Group::whereHas('users', function($q) use($user_id) {
+            $q->whereIn('id', [$user_id]);
+        })->select('id')->get();
+
+        $group_events_count = Event::whereIn('group_id', $groups)
+                                ->where('start', '>', $right_now)
+                                ->count();
+        $user_events_count = Event::where('user_id', '=', $user_id)
+                                ->where('start', '>=', $right_now)
+                                ->count();
+
+        $event_count = $group_events_count + $user_events_count;
+
+        return view('home', compact('greetings', 'event_count'));
     }
 }

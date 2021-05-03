@@ -54,7 +54,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Upcoming Events</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{placeholder}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $event_count }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
