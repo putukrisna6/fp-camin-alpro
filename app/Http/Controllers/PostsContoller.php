@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Reply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsContoller extends Controller
 {
@@ -69,9 +70,13 @@ class PostsContoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        if ($post->user_id != Auth::user()->id) {
+            return abort(403);
+        }
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -81,9 +86,16 @@ class PostsContoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $post->update($data);
+
+        return redirect('groups/show/'. $post->group_id);
     }
 
     /**

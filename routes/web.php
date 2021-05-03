@@ -66,6 +66,8 @@ Route::prefix('posts')->group(function() {
     Route::get('/create/{group}', [PostsContoller::class, 'create']);
     Route::post('/', [PostsContoller::class, 'store']);
     Route::get('/delete/{post}', [PostsContoller::class, 'destroy']);
+    Route::get('/edit/{post}', [PostsContoller::class, 'edit']);
+    Route::patch('/{post}', [PostsContoller::class, 'update']);
 });
 
 Route::post('/reply/{post}', [RepliesController::class, 'store']);

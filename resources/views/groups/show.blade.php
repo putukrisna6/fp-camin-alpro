@@ -76,7 +76,7 @@
                                 </a>
                                 @if ($p->user->id == Auth::user()->id)
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><i class="fas fa-edit fa-sm mr-1"></i> Edit Post</a>
+                                        <a class="dropdown-item" href="/posts/edit/{{ $p->id }}"><i class="fas fa-edit fa-sm mr-1"></i> Edit Post</a>
                                         <a class="dropdown-item" href="/posts/delete/{{ $p->id }}"><i class="fas fa-trash-alt fa-sm mr-1"></i> Delete Post</a>
                                     </div>
                                 @else
