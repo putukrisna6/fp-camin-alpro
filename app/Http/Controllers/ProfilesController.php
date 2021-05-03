@@ -59,6 +59,10 @@ class ProfilesController extends Controller
      */
     public function show(User $user)
     {
+        if ($user->id == Auth::user()->id) {
+            return view('profiles.index');
+        }
+
         return view('profiles.show', compact('user'));
     }
 
@@ -70,6 +74,10 @@ class ProfilesController extends Controller
      */
     public function edit(User $user)
     {
+        if ($user->id != Auth::user()->id) {
+            return abort(403);
+        }
+
         return view('profiles.edit', compact('user'));
     }
 
