@@ -66,7 +66,7 @@
                                 <a href="/profile/show/{{ $p->user->id }}">{{ $p->user->name }}</a>
                                 <div class="text-muted small"> {{ date('D, d M Y H:i', strtotime($p->created_at)) }}</div>
                             </div>
-                            <div class="text-muted small ml-3 text-right">
+                            <div class="text-muted small ml-3 text-right hide-details">
                                 <div><strong>{{ $p->user->profile->profession }}</strong></div>
                                 <div>{{ $p->user->profile->education }}</div>
                             </div>
@@ -122,7 +122,7 @@
                     <div class="card-footer d-flex flex-wrap justify-content-between align-items-center p-0">
                         <div class="px-4 pt-3">
                         </div>
-                        <form class="form-inline mx-3 my-2" style="width: 20rem" method="post" action="/reply/{{ $p->id }}" enctype="multipart/form-data">
+                        <form class="form-inline mx-3 my-2" style="width: 30rem" method="post" action="/reply/{{ $p->id }}" enctype="multipart/form-data">
                             @csrf
                             <input id="content"
                                     type="text"
