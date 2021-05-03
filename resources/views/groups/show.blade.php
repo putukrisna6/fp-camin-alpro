@@ -23,7 +23,7 @@
                     <hr class="m-0 mb-2">
                     <p class="card-text">{{ date('D, d M Y', strtotime($group->created_at)) }}</p class="">
                 </div>
-                <div class="text-left bg-white text-dark p-3 rounded-lg">
+                <div class="text-left bg-white text-dark p-3 rounded-lg mb-3">
                     <p class="text-muted mb-0">Events</p>
                     <hr class="m-0 mb-2">
                     <div class="row">
@@ -34,6 +34,15 @@
                     <div class="row mt-2">
                         <div class="col-md-12">
                             <a href="/calendar/create/{{ $group->id }}" class="btn btn-info"><i class="fas fa-bookmark fa-sm text-white-50 mr-1"></i> Schedule an event</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-left bg-white text-dark p-3 rounded-lg">
+                    <p class="text-muted mb-0">Group Members</p>
+                    <hr class="m-0 mb-2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="/groups/members/{{ $group->id }}" class="btn btn-secondary"><i class="fas fa-user-friends fa-sm text-white-50 mr-1"></i> See who's here</a>
                         </div>
                     </div>
                 </div>
@@ -52,9 +61,9 @@
                 <div class="card mb-4 shadow border-left-primary">
                     <div class="card-header">
                         <div class="media flex-wrap w-100 align-items-center">
-                            <img src="{{ $p->user->profile->profileImage() }}" class="d-block ui-w-40 rounded-circle bg-navbar" style="max-height: 3rem" alt="">
+                            <img src="{{ $p->user->profile->profileImage() }}" class="d-block ui-w-40 rounded-circle bg-navbar" style="height: 3rem; width: 3rem; object-fit: cover;" alt="">
                             <div class="media-body ml-3">
-                                <a href="#">{{ $p->user->name }}</a>
+                                <a href="/profile/show/{{ $p->user->id }}">{{ $p->user->name }}</a>
                                 <div class="text-muted small"> {{ date('D, d M Y H:i', strtotime($p->created_at)) }}</div>
                             </div>
                             <div class="text-muted small ml-3 text-right">

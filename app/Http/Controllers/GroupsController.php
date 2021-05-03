@@ -25,14 +25,6 @@ class GroupsController extends Controller
         return view('groups.index', compact('groups'));
     }
 
-    public function users()
-    {
-        $user_id = Auth::user()->id;
-        $groups = User::find($user_id)->groups;
-
-        return view('groups.group_user', compact('groups'));
-    }
-
     public function addUser(Group $group) {
         $data = $group->users->find(Auth::user()->id);
         if ($data != NULL) {
@@ -42,7 +34,7 @@ class GroupsController extends Controller
             $group->users()->attach(Auth::user());
         }
 
-        return redirect('groups/list');
+        return redirect('profile/groups');
     }
 
     /**
@@ -84,7 +76,7 @@ class GroupsController extends Controller
             $data,
             $imageArray ?? []
         ));
-        return redirect('groups/join');
+        return redirect('groups/index');
     }
 
     /**
@@ -168,12 +160,18 @@ class GroupsController extends Controller
         }
         $group->delete();
 
-        return redirect('groups/list');
+        return redirect('profile/groups');
     }
 
     public function leave($id)
     {
         Auth::user()->groups()->detach($id);
-        return redirect('groups/list');
+        return redirect('profile/groups');
+    }
+
+    public function members(Group $group) {
+        $group_name = $group->name;
+        $users = $group->users;
+        return view('groups.members', compact('users', 'group_name'));
     }
 }

@@ -38,11 +38,12 @@ Route::prefix('profile')->group(function () {
     Route::get('/display', [ProfilesController::class, 'index']);
     Route::get('/{user}/edit', [ProfilesController::class, 'edit'])->name('profile.edit');
     Route::patch('/{user}', [ProfilesController::class, 'update'])->name('profile.update');
+    Route::get('/show/{user}', [ProfilesController::class, 'show']);
+    Route::get('/groups', [ProfilesController::class, 'groups']);
 });
 
 Route::prefix('groups')->group(function () {
-    Route::get('/list', [GroupsController::class, 'users']);
-    Route::get('/join', [GroupsController::class, 'index']);
+    Route::get('/index', [GroupsController::class, 'index']);
     Route::get('/create', [GroupsController::class, 'create']);
     Route::post('/', [GroupsController::class, 'store']);
     Route::get('/add/{group}', [GroupsController::class, 'addUser']);
@@ -51,6 +52,7 @@ Route::prefix('groups')->group(function () {
     Route::patch('/{group}', [GroupsController::class, 'update']);
     Route::get('/delete/{group}', [GroupsController::class, 'destroy']);
     Route::get('/leave/{group}', [GroupsController::class, 'leave']);
+    Route::get('/members/{group}', [GroupsController::class, 'members']);
 });
 
 Route::prefix('calendar')->group(function() {

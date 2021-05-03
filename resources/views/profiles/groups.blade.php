@@ -18,13 +18,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <p><i class="fas fa-sitemap fa-sm mr-1"></i> Group Members</p>
+                    <p><i class="fas fa-sitemap fa-sm mr-1"></i> Group Members: {{ $group->users->count() }}</p>
                     <hr>
-                    <ul>
-                        @foreach ($group->users as $user)
-                            <li>{{ $user->name }}</li>
-                        @endforeach
-                    </ul>
                 </div>
             </div>
         </div>

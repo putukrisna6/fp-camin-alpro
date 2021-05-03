@@ -4,7 +4,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 ml-2"><i class="fas fa-id-badge fa-sm mr-1"></i> Your Profile</h1>
 </div>
-<div class="emp-profile shadow">
+<div class="emp-profile shadow p-4 pt-5">
     <div class="row">
         <div class="col-md-4">
             <div class="modal" id="myModal">
@@ -19,7 +19,7 @@
             </div>
 
             <div class="profile-img mb-0">
-                <img id="myImg" src="{{ Auth::user()->profile->profileImage() }}" class="myimg d-inline-block align-top" alt="{{ Auth::user()->name }}">
+                <img id="myImg" src="{{ Auth::user()->profile->profileImage() }}" alt="{{ Auth::user()->name }}">
             </div>
         </div>
         <div class="col-md-6">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilesController extends Controller
 {
@@ -11,6 +12,14 @@ class ProfilesController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+
+    public function groups() {
+        $user_id = Auth::user()->id;
+        $groups = User::find($user_id)->groups;
+
+        return view('profiles.groups', compact('groups'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,9 +57,9 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('profiles.show', compact('user'));
     }
 
     /**

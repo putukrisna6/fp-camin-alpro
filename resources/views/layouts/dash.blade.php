@@ -64,7 +64,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('groups/list') }}">
+                <a class="nav-link" href="{{ url('profile/groups') }}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Groups</span></a>
             </li>
@@ -85,7 +85,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('groups/join') }}">
+                <a class="nav-link" href="{{ url('groups/index') }}">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Join</span></a>
             </li>
