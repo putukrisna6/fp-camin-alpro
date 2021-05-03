@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.dash')
 
 @section('date-script')
 <script type="text/javascript">

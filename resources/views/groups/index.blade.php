@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.dash')
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
