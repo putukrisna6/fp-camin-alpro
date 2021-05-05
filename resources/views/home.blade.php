@@ -37,7 +37,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                New Tasks</div>
+                                New Task(s)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{placeholder}</div>
                         </div>
                         <div class="col-auto">
@@ -53,8 +53,24 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Upcoming Events</div>
+                                <a href="/calendar" class="text-decoration-none text-warning">Upcoming Event(s)</a></div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $event_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                <a href="/report/index" class="text-decoration-none text-danger">Reported Post(s)</a></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $report_count }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>

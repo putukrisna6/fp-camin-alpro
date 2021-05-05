@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Group;
+use App\Models\Post;
+use App\Models\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,10 +45,7 @@ class HomeController extends Controller
 
         $right_now = now()->toDateTimeString();
 
-        // dd(now()->toDateTimeString());
-
         $user_id = Auth::user()->id;
-
         $groups = Group::whereHas('users', function($q) use($user_id) {
             $q->whereIn('id', [$user_id]);
         })->select('id')->get();
@@ -57,9 +56,11 @@ class HomeController extends Controller
         $user_events_count = Event::where('user_id', '=', $user_id)
                                 ->where('start', '>=', $right_now)
                                 ->count();
-
         $event_count = $group_events_count + $user_events_count;
 
-        return view('home', compact('greetings', 'event_count'));
+        $report_count = Post::whereHas('reports')
+                    ->where('user_id', '=', $user_id)
+                    ->count();
+        return view('home', compact('greetings', 'event_count', 'report_count'));
     }
 }

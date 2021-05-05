@@ -81,7 +81,7 @@
                                     </div>
                                 @else
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><i class="fas fa-flag fa-sm mr-1"></i> Report Post</a>
+                                        <a class="dropdown-item" href="/report/create/{{ $p->id }}"><i class="fas fa-flag fa-sm mr-1"></i> Report Post</a>
                                     </div>
                                 @endif
                             </div>

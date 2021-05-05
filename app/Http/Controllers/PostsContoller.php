@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Reply;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -104,19 +105,13 @@ class PostsContoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $posts = Post::where('id', '=', $id)->get();
+        $group_id = $post->group_id;
+        $post_id = $post->id;
+        Reply::where('post_id', '=', $post_id)->delete();
 
-        $group_id = 0;
-
-        foreach( $posts as $p ) {
-            $group_id = $p['group_id'];
-        }
-
-        $posts = Post::where('id', '=', $id)->delete();
-
-        Reply::where('post_id', '=', $id)->delete();
+        $post->delete();
 
         return redirect('groups/show/'. $group_id);
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\PostsContoller;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\RepliesController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +69,12 @@ Route::prefix('posts')->group(function() {
     Route::get('/delete/{post}', [PostsContoller::class, 'destroy']);
     Route::get('/edit/{post}', [PostsContoller::class, 'edit']);
     Route::patch('/{post}', [PostsContoller::class, 'update']);
+});
+
+Route::prefix('report')->group(function() {
+    Route::get('/create/{post}', [ReportController::class, 'create']);
+    Route::post('/', [ReportController::class, 'store']);
+    Route::get('/index', [ReportController::class, 'index']);
 });
 
 Route::post('/reply/{post}', [RepliesController::class, 'store']);

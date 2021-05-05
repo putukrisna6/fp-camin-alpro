@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\Post;
+use App\Models\Reply;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -139,33 +140,50 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Group $group)
     {
+        $group_id = $group->id;
         $user_id = Auth::user()->id;
+        $check = $group->users->where('id', '=', $user_id);
 
-        $group = Group::whereHas('users', function($q) use($user_id) {
-            $q->whereIn('id', [$user_id]);
-        })->where('id', '=', $id)->get()->first();
-
-        if ($group == NULL) {
-            return abort(404);
+        if ($check->count() == 0) {
+            return abort(403);
         }
 
-        $users = User::whereHas('groups', function($q) use($id) {
-            $q->whereIn('id', [$id]);
+        $posts = Post::where('group_id', '=', $group_id)->get();
+
+        foreach($posts as $post) {
+            Reply::where('post_id', '=', $post->id)->delete();
+            $post->delete();
+        }
+
+        $users = User::whereHas('groups', function($q) use($group_id) {
+            $q->whereIn('id', [$group_id]);
         })->get();
 
         foreach($users as $user) {
-            $user->groups()->detach($id);
+            $user->groups()->detach($group_id);
         }
         $group->delete();
 
         return redirect('profile/groups');
     }
 
-    public function leave($id)
+    public function leave(Group $group)
     {
-        Auth::user()->groups()->detach($id);
+        $group_id = $group->id;
+        Auth::user()->groups()->detach($group_id);
+
+        if ($group->users->count() == 0) {
+            $posts = Post::where('group_id', '=', $group_id)->get();
+
+            foreach($posts as $post) {
+                Reply::where('post_id', '=', $post->id)->delete();
+                $post->delete();
+            }
+            $group->delete();
+        }
+
         return redirect('profile/groups');
     }
 
