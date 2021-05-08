@@ -141,8 +141,20 @@
                 </div>
             </div>
         @endforeach
-    </div>
 
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-8">
+        <div class="d-flex justify-content-end align-items-center">
+            <span>
+                {{ $posts->links("pagination::bootstrap-4") }}
+            </span>
+        </div>
+    </div>
 </div>
 
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CollectionHelper;
 use App\Models\Group;
 use App\Models\Post;
 use App\Models\Reply;
@@ -98,8 +99,11 @@ class GroupsController extends Controller
             return abort(404);
         }
 
-        $posts = Post::where('group_id', '=', $id)->get();
-        $posts = $posts->sortByDesc('created_at');
+        $temp = Post::where('group_id', '=', $id)->get();
+        $temp = $temp->sortByDesc('created_at');
+
+        $pageSize = 3;
+        $posts = CollectionHelper::paginate($temp, $pageSize);
 
         return view('groups.show', compact('group', 'id', 'posts'));
     }

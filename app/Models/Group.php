@@ -16,6 +16,22 @@ class Group extends Model
         return ($this->image) ? '/storage/' . $this->image : '/img/placeholder/placeholder-image-card.webp';
     }
 
+    public function groupType() {
+        $type = 'border-bottom-info';
+
+        if ($this->industry == 'Banking') {
+            $type = 'border-bottom-warning';
+        }
+        else if ($this->industry == 'Healthcare') {
+            $type = 'border-bottom-primary';
+        }
+        else if ($this->industry == 'Education') {
+            $type = 'border-bottom-success';
+        }
+
+        return $type;
+    }
+
     protected static function boot() {
         parent::boot();
 
