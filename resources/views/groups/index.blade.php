@@ -3,7 +3,32 @@
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 ml-2"><i class="fas fa-code-branch fa-sm mr-1"></i> Start collaborating</h1>
-    <a href="{{ url('groups/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50 mr-1"></i> Add Group</a>
+    <div>
+        <div class="d-none d-sm-inline-block">
+            <form action="/groups/index" method="GET" role="search">
+                <div class="input-group">
+                    <span class="input-group-btn mr-1 mt-1">
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-info" type="submit" title="Search groups">
+                            <span class="fas fa-search"></span>
+                        </button>
+                    </span>
+                    <input type="text" class="form-control border-primary mr-1 mt-1 rounded-lg" style="height: 2rem;" name="name" placeholder="Search groups" id="name">
+                </div>
+            </form>
+        </div>
+        <div class="dropdown d-none d-sm-inline-block">
+            <button class="d-none d-sm-inline-block btn btn-sm btn-white shadow-sm dropdown-toggle" type="button" data-toggle="dropdown"><i class="fas fa-filter fa-sm mr-1"></i> Filter Industry
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li class="my-1"><a class="ml-2" href="?industry=tech">Tech</a></li>
+                  <li class="mb-1"><a class="ml-2" href="?industry=education">Education</a></li>
+                  <li class="mb-1"><a class="ml-2" href="?industry=healthcare">Healthcare</a></li>
+                  <li class="mb-1"><a class="ml-2" href="?industry=banking">Banking</a></li>
+                </ul>
+        </div>
+        <a href="{{ url('groups/index') }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-trash-restore fa-sm text-white-50 mr-1"></i> Reset filters</a>
+        <a href="{{ url('groups/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50 mr-1"></i> Add Group</a>
+    </div>
 </div>
 
 <div class="row">
@@ -35,5 +60,11 @@
             </div>
         @endif
     @endforeach
+</div>
+
+<div class="container justify-content-center d-flex">
+    <span>
+        {{ $groups->links("pagination::bootstrap-4") }}
+    </span>
 </div>
 @endsection

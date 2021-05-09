@@ -25,5 +25,9 @@
         </div>
     @endforeach
 </div>
-
+<div class="container justify-content-center d-flex">
+    <span>
+        {{ $groups->links("pagination::bootstrap-4") }}
+    </span>
+</div>
 @endsection

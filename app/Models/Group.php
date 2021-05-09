@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utilities\FilterBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,13 @@ class Group extends Model
                 $group->users()->attach(Auth::user());
             }
         );
+    }
+
+    public function scopeFilterBy($query, $filters) {
+        $namespace = 'App\Utilities\GroupFilters';
+        $filter = new FilterBuilder($query, $filters, $namespace);
+
+        return $filter->apply();
     }
 
     public function posts() {

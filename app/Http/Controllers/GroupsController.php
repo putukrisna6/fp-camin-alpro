@@ -22,7 +22,11 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        $groups = Group::all();
+        // $groups = Group::all();
+        $temp = Group::filterBy(request()->all())->get();
+
+        $pageSize = 4;
+        $groups = CollectionHelper::paginate($temp, $pageSize);
 
         return view('groups.index', compact('groups'));
     }

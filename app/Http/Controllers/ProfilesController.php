@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CollectionHelper;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,10 @@ class ProfilesController extends Controller
 
     public function groups() {
         $user_id = Auth::user()->id;
-        $groups = User::find($user_id)->groups;
+        $temp = User::find($user_id)->groups;
+
+        $pageSize = 8;
+        $groups = CollectionHelper::paginate($temp, $pageSize);
 
         return view('profiles.groups', compact('groups'));
     }
