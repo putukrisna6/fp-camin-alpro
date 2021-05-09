@@ -12,7 +12,7 @@
                             <span class="fas fa-search"></span>
                         </button>
                     </span>
-                    <input type="text" class="form-control border-primary mr-1 mt-1 rounded-lg" style="height: 2rem;" name="name" placeholder="Search groups" id="name">
+                    <input type="text" class="form-control border-0 mr-1 mt-1 rounded-lg" style="height: 2rem;" required name="name" placeholder="Search groups" id="name">
                 </div>
             </form>
         </div>
@@ -26,7 +26,7 @@
                   <li class="mb-1"><a class="ml-2" href="?industry=banking">Banking</a></li>
                 </ul>
         </div>
-        <a href="{{ url('groups/index') }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-trash-restore fa-sm text-white-50 mr-1"></i> Reset filters</a>
+        <a href="{{ url('groups/index') }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-trash-restore fa-sm text-white-50 mr-1"></i> Reset Filters</a>
         <a href="{{ url('groups/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50 mr-1"></i> Add Group</a>
     </div>
 </div>

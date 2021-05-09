@@ -40,8 +40,10 @@ Route::prefix('profile')->group(function () {
     Route::get('/{user}/edit', [ProfilesController::class, 'edit'])->name('profile.edit');
     Route::patch('/{user}', [ProfilesController::class, 'update'])->name('profile.update');
     Route::get('/show/{user}', [ProfilesController::class, 'show']);
-    Route::get('/groups', [ProfilesController::class, 'groups']);
+    Route::get('/groups/{industry}', [ProfilesController::class, 'groups']);
 });
+
+Route::get('/people', [ProfilesController::class, 'people']);
 
 Route::prefix('groups')->group(function () {
     Route::get('/index', [GroupsController::class, 'index']);

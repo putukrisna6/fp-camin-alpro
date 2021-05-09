@@ -14,9 +14,22 @@ class ProfilesController extends Controller
         $this->middleware('auth');
     }
 
-    public function groups() {
+    public function groups($industry) {
         $user_id = Auth::user()->id;
         $temp = User::find($user_id)->groups;
+
+        if ($industry == 'banking') {
+            $temp = $temp->where('industry', 'Banking');
+        }
+        else if ($industry == 'healthcare') {
+            $temp = $temp->where('industry', 'Healthcare');
+        }
+        else if ($industry == 'education') {
+            $temp = $temp->where('industry', 'Education');
+        }
+        else if ($industry == 'tech') {
+            $temp = $temp->where('industry', 'Tech');
+        }
 
         $pageSize = 8;
         $groups = CollectionHelper::paginate($temp, $pageSize);
@@ -32,6 +45,12 @@ class ProfilesController extends Controller
     public function index()
     {
         return view('profiles.index');
+    }
+
+    public function people() {
+        $people = User::filterBy(request()->all())->get();
+
+        return view('profiles.people', compact('people'));
     }
 
     /**
@@ -103,6 +122,7 @@ class ProfilesController extends Controller
             'expertise' => '',
             'gender' => '',
             'image' => '',
+            'public' => '',
         ]);
 
         if (request('image')) {

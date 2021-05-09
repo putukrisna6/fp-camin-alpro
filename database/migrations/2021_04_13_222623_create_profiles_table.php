@@ -24,6 +24,7 @@ class CreateProfilesTable extends Migration
             $table->enum('expertise', ['Beginner', 'Intermediate', 'Advanced'])->nullable();
             $table->enum('gender', ['Male', 'Female', 'Others'])->nullable();
             $table->string('image')->nullable();
+            $table->boolean('public')->default(false);
             $table->timestamps();
 
             $table->index('user_id');

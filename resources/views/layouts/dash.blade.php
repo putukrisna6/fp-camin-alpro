@@ -64,9 +64,21 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('profile/groups') }}">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Groups</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                    <i class="fas fa-users fa-folder"></i>
+                    <span>Groups</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ url('profile/groups/all') }}">All</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Industry</h6>
+                        <a class="collapse-item" href="{{ url('profile/groups/tech') }}">Tech</a>
+                        <a class="collapse-item" href="{{ url('profile/groups/education') }}">Education</a>
+                        <a class="collapse-item" href="{{ url('profile/groups/healthcare') }}">Healthcare</a>
+                        <a class="collapse-item" href="{{ url('profile/groups/banking') }}">Banking</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -85,9 +97,19 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('groups/index') }}">
-                    <i class="fas fa-fw fa-comments"></i>
-                    <span>Join</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collaborate" aria-expanded="false" aria-controls="collaborate">
+                    <i class="fas fa-link fa-folder"></i>
+                    <span>Connect</span>
+                </a>
+                <div id="collaborate" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Groups</h6>
+                        <a class="collapse-item" href="{{ url('groups/index') }}">Join</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">People</h6>
+                        <a class="collapse-item" href="{{ url('people') }}">Find</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

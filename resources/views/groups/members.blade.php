@@ -13,8 +13,8 @@
     </div>
 
     <div class="row">
-        @foreach ($users->split($users->count()/2) as $row)
-            @foreach ($row as $user)
+        @if ($users->count() == 1)
+            @foreach ($users as $user)
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                     <!-- Team Thumb-->
@@ -33,7 +33,31 @@
                     </div>
                 </div>
             @endforeach
-        @endforeach
+        @else
+            @foreach ($users->split($users->count()/2) as $row)
+                @foreach ($row as $user)
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+
+                        <div class="advisor_thumb"><img src="{{ $user->profile->profileImage() }}" alt="" style="object-fit: cover; max-height: 12rem; min-height: 12rem">
+                            <!-- Social Info-->
+                            <div class="social-info">
+                                <a href="/profile/show/{{ $user->id }}"><i class="fa fa-id-badge"></i></a>
+                            </div>
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>{{ $user->name }}</h6>
+                            <p class="designation">{{ $user->profile->profession }}</p>
+                        </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endforeach
+        @endif
+
+
     </div>
 </div>
 @endsection

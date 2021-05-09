@@ -96,6 +96,16 @@
         </div>
 
         <div class="form-group">
+            <label for="public">Profile Visibility</label>
+            <select class="form-control @error('public') is-invalid @enderror"
+                    id="public"
+                    name="public">
+              <option value="true">Public</option>
+              <option value="false">Private</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="image">Profile Image</label>
             <input type="file" class="form-control-file" id="image" name="image">
 
