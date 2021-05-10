@@ -40,7 +40,7 @@ class GroupsController extends Controller
             $group->users()->attach(Auth::user());
         }
 
-        return redirect('profile/groups/all');
+        return redirect('groups/show/'.$group->id);
     }
 
     /**

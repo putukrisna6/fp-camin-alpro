@@ -24,7 +24,7 @@
     <div class="row">
         @if ($people->count() == 1)
             @foreach ($people as $person)
-                @if ($person->id != Auth::user()->id)
+                @if ($person->id != Auth::user()->id && $person->profile->public == true)
                     <div class="col-sm-6 col-lg-3">
                         <div class="card clean-card text-center">
                             <img src="{{ $person->profile->profileImage() }}" class="card-img-top w-100 d-block">
@@ -42,7 +42,7 @@
         @else
             @foreach ($people->split($people->count()/2) as $row)
                 @foreach ($row as $person)
-                    @if ($person->id != Auth::user()->id)
+                    @if ($person->id != Auth::user()->id && $person->profile->public == true)
                         <div class="col-sm-6 col-lg-3 mb-3">
                             <div class="card clean-card text-center">
                                 <img src="{{ $person->profile->profileImage() }}" class="card-img-top w-100 d-block">
