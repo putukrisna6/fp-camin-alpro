@@ -27,7 +27,7 @@
                     </div>
                     <!-- Team Details-->
                     <div class="single_advisor_details_info">
-                        <h6>{{ $user->name }}</h6>
+                        <h6>{{ $user->userName() }}</h6>
                         <p class="designation">{{ $user->profile->profession }}</p>
                     </div>
                     </div>
@@ -48,7 +48,7 @@
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>{{ $user->name }}</h6>
+                            <h6>{{ $user->userName() }}</h6>
                             <p class="designation">{{ $user->profile->profession }}</p>
                         </div>
                         </div>

@@ -63,7 +63,7 @@
                         <div class="media flex-wrap w-100 align-items-center">
                             <img src="{{ $p->user->profile->profileImage() }}" class="d-block ui-w-40 rounded-circle bg-navbar" style="height: 3rem; width: 3rem; object-fit: cover;" alt="">
                             <div class="media-body ml-3">
-                                <a href="/profile/show/{{ $p->user->id }}">{{ $p->user->name }}</a>
+                                <a href="/profile/show/{{ $p->user->id }}">{{ $p->user->userName() }}</a>
                                 <div class="text-muted small"> {{ date('D, d M Y H:i', strtotime($p->created_at)) }}</div>
                             </div>
                             <div class="text-muted small ml-3 text-right hide-details">
@@ -99,7 +99,7 @@
                                 <div class="media">
                                     <div class="media-body ml-3">
                                         <div class="small text-primary">
-                                            <strong>{{ $re->user->name }}</strong>
+                                            <strong>{{ $re->user->userName() }}</strong>
                                         </div>
                                     </div>
                                     <div class="ml-3 mr-3">

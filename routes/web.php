@@ -47,7 +47,6 @@ Route::get('/people', [ProfilesController::class, 'people']);
 
 Route::prefix('groups')->group(function () {
     Route::get('/index', [GroupsController::class, 'index']);
-    // Route::get('/index?filter[industry]={ind}', [GroupsController::class, 'index']);
     Route::get('/create', [GroupsController::class, 'create']);
     Route::post('/', [GroupsController::class, 'store']);
     Route::get('/add/{group}', [GroupsController::class, 'addUser']);

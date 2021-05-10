@@ -29,9 +29,20 @@
                 @enderror
             </div>
 
-            <label for="password" class="sr-only">{{ __('Password') }}</label>
+            <label for="password" class="sr-only">{{ __('Password') }}
+            </label>
             <div>
-                <input type="password" id="password" class="form-control m-1 @error('password') is-invalid @enderror" placeholder="your password" name="password" required autocomplete="current-password">
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control m-1
+                    @error('password')
+                        is-invalid
+                    @enderror"
+                    placeholder="your password"
+                    name="password"
+                    required autocomplete="current-password"
+                >
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -39,12 +50,17 @@
                 @enderror
             </div>
 
-            <div class="checkbox mb-3">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <div class="pl-4 d-sm-flex align-items-center justify-content-between">
+                <div class="checkbox mb-3">
+                    <input class="form-check-input" type="checkbox" onclick="myFunction()">Show Password
+                </div>
+                <div class="checkbox mb-3">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                <label class="form-check-label" for="remember">
-                    {{ __('Remember Me') }}
-                </label>
+                    <label class="form-check-label" for="remember">
+                        {{ __('Remember Me') }}
+                    </label>
+                </div>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">
                 {{ __('Login') }}
@@ -54,8 +70,20 @@
                     {{ __('Forgot Your Password?') }}
                 </a>
             @endif
+
             <p class="mt-0 mb-3 text-muted">© 2021</p>
         </form>
     </div>
 </div>
 @endsection
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

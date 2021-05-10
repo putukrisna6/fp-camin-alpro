@@ -73,12 +73,16 @@
                     required autocomplete="new-password">
             </div>
 
+            <div class="checkbox mb-3">
+                <input class="form-check-input" type="checkbox" onclick="myFunction()">Show Password
+            </div>
+
             <button class="btn btn-lg btn-primary btn-block" type="submit">
                 {{ __('Register') }}
             </button>
 
             <p class="mt-2">
-                Already has an account?
+                Already have an account?
                <span><a href="{{ route('login') }}">{{ __('Login') }}</a></span>
                 instead
             </p>
@@ -87,3 +91,22 @@
     </div>
 </div>
 @endsection
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        var y = document.getElementById("password-confirm");
+
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+
+        if (y.type === "password") {
+            y.type = "text";
+        } else {
+            y.type = "password";
+        }
+    }
+</script>

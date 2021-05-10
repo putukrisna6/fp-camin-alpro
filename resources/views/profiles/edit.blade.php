@@ -100,8 +100,8 @@
             <select class="form-control @error('public') is-invalid @enderror"
                     id="public"
                     name="public">
-              <option value="true">Public</option>
-              <option value="false">Private</option>
+              <option value="1">Public</option>
+              <option value="0">Private</option>
             </select>
         </div>
 

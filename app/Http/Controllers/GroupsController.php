@@ -40,7 +40,7 @@ class GroupsController extends Controller
             $group->users()->attach(Auth::user());
         }
 
-        return redirect('profile/groups');
+        return redirect('profile/groups/all');
     }
 
     /**
@@ -174,7 +174,7 @@ class GroupsController extends Controller
         }
         $group->delete();
 
-        return redirect('profile/groups');
+        return redirect('profile/groups/all');
     }
 
     public function leave(Group $group)
@@ -192,7 +192,7 @@ class GroupsController extends Controller
             $group->delete();
         }
 
-        return redirect('profile/groups');
+        return redirect('profile/groups/all');
     }
 
     public function members(Group $group) {
